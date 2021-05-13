@@ -29,7 +29,10 @@ JOIN prenotazioni
 ON prenotazioni_has_ospiti.prenotazione_id=prenotazioni.id
 ORDER BY prenotazioni.configurazione_id DESC
 -- 2
-
+SELECT paganti.id, name, lastname, pagamenti.price, pagamenti.created_at
+FROM paganti
+JOIN pagamenti
+ON pagamenti.pagante_id=paganti.id
 -- 3
 
 
