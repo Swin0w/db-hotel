@@ -34,8 +34,25 @@ FROM paganti
 JOIN pagamenti
 ON pagamenti.pagante_id=paganti.id
 -- 3
-
-
+SELECT stanze.id, room_number, floor, SUM(pagamenti.price)
+FROM stanze
+JOIN prenotazioni
+ON prenotazioni.stanza_id=stanze.id
+JOIN pagamenti
+ON pagamenti.prenotazione_id=prenotazioni.id
+WHERE floor = 1
+GROUP BY room_number
+-- 4
+SELECT name, lastname, address
+FROM paganti
+WHERE id = 7
+-- 5
+SELECT stanze.id
+FROM stanze
+JOIN prenotazioni
+ON prenotazioni.stanza_id=stanze.id
+WHERE prenotazioni.stanza_id IS NULL
+-- 6
 
 
 -- Continuo db-hotel -> FOGLIO 2
